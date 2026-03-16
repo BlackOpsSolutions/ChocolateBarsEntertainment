@@ -1151,6 +1151,7 @@ img { max-width: 100%; display: block; }
   }
   .release-card.featured .release-art { height: 200px; }
 
+  .hero-scroll { display: none; }
   .hero-actions { flex-direction: column; }
   .hero-actions .btn { text-align: center; }
   .footer-links { grid-template-columns: 1fr; }
