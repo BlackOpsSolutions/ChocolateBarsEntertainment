@@ -41,6 +41,32 @@
   <!-- HERO -->
   <section class="hero" id="home">
     <div class="hero-bg">
+      <svg class="hero-chocbar" viewBox="0 0 500 320" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <clipPath id="barClip">
+            <!-- Bite: smooth cubic bezier scallops following a mouth-shaped arc, top-right corner -->
+            <path d="M 1,1 L 318,1 C 282,12 276,54 352,68 C 322,80 326,114 412,124 C 388,134 443,167 499,160 L 499,319 L 1,319 Z"/>
+          </clipPath>
+        </defs>
+        <!-- Loose crumb floating in bitten corner -->
+        <path d="M 362,14 L 372,10 L 380,16 L 377,25 L 367,28 L 358,21 Z" stroke="#c8922a" stroke-width="1.5" transform="rotate(-15, 369, 19)"/>
+        <!-- Main bar (clipped to bite shape) -->
+        <g clip-path="url(#barClip)">
+          <path d="M 1,1 L 318,1 C 282,12 276,54 352,68 C 322,80 326,114 412,124 C 388,134 443,167 499,160 L 499,319 L 1,319 Z" stroke="#c8922a" stroke-width="2"/>
+          <!-- Row 1 -->
+          <rect x="22" y="22" width="80" height="131" rx="6" stroke="#c8922a" stroke-width="1.5"/>
+          <rect x="116" y="22" width="80" height="131" rx="6" stroke="#c8922a" stroke-width="1.5"/>
+          <rect x="210" y="22" width="80" height="131" rx="6" stroke="#c8922a" stroke-width="1.5"/>
+          <rect x="304" y="22" width="80" height="131" rx="6" stroke="#c8922a" stroke-width="1.5"/>
+          <rect x="398" y="22" width="80" height="131" rx="6" stroke="#c8922a" stroke-width="1.5"/>
+          <!-- Row 2 -->
+          <rect x="22" y="167" width="80" height="131" rx="6" stroke="#c8922a" stroke-width="1.5"/>
+          <rect x="116" y="167" width="80" height="131" rx="6" stroke="#c8922a" stroke-width="1.5"/>
+          <rect x="210" y="167" width="80" height="131" rx="6" stroke="#c8922a" stroke-width="1.5"/>
+          <rect x="304" y="167" width="80" height="131" rx="6" stroke="#c8922a" stroke-width="1.5"/>
+          <rect x="398" y="167" width="80" height="131" rx="6" stroke="#c8922a" stroke-width="1.5"/>
+        </g>
+      </svg>
       <div class="bars-visual">
         <span class="bar"></span><span class="bar"></span><span class="bar"></span>
         <span class="bar"></span><span class="bar"></span><span class="bar"></span>

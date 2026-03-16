@@ -242,6 +242,25 @@ img { max-width: 100%; display: block; }
   pointer-events: none;
 }
 
+.hero-chocbar {
+  position: absolute;
+  left: 35%;
+  top: 50%;
+  transform: translateY(-50%) rotate(-10deg);
+  width: 58%;
+  max-width: 640px;
+  opacity: 0.09;
+}
+
+@media (max-width: 768px) {
+  .hero-chocbar {
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-10deg);
+    width: 95%;
+    max-width: none;
+  }
+}
+
 /* Animated equalizer bars */
 .bars-visual {
   position: absolute;
