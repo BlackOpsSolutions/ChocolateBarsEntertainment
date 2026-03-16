@@ -1,0 +1,69 @@
+import releasesData from '../data/releases';
+import Carousel from './Carousel';
+
+function YouTubeThumbnail({ release }) {
+  return (
+    <div className="release-art release-video-wrap">
+      <a
+        href={release.youtubeUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="yt-thumb-link"
+        aria-label={`Watch ${release.title} on YouTube`}
+      >
+        <img src={release.thumbnail} alt={`${release.title} thumbnail`} className="yt-thumb" />
+        <div className="yt-play-btn">
+          <svg viewBox="0 0 68 48" width="68" height="48">
+            <path d="M66.5 7.7a8.5 8.5 0 0 0-6-6C56 0 34 0 34 0S12 0 7.5 1.7a8.5 8.5 0 0 0-6 6C0 12.3 0 24 0 24s0 11.7 1.5 16.3a8.5 8.5 0 0 0 6 6C12 48 34 48 34 48s22 0 26.5-1.7a8.5 8.5 0 0 0 6-6C68 35.7 68 24 68 24s0-11.7-1.5-16.3z" fill="#FF0000" />
+            <path d="M27 34l18-10-18-10v20z" fill="#fff" />
+          </svg>
+        </div>
+      </a>
+      <span className="release-badge">New</span>
+    </div>
+  );
+}
+
+function ReleaseArt({ release }) {
+  return (
+    <div className="release-art" style={{ background: release.gradient }}>
+      <div className="release-play">&#9654;</div>
+    </div>
+  );
+}
+
+export default function Releases() {
+  return (
+    <section className="releases" id="releases">
+      <div className="container">
+        <div className="section-header">
+          <p className="section-label">Fresh Off The Press</p>
+          <h2 className="section-title">Latest Releases</h2>
+          <p className="section-sub">Hot out the studio. Stream it everywhere.</p>
+        </div>
+
+        <Carousel className="releases-grid">
+          {releasesData.map((r) => (
+            <div className={`release-card${r.featured ? ' featured' : ''}`} key={r.title}>
+              {r.featured && r.thumbnail ? (
+                <YouTubeThumbnail release={r} />
+              ) : (
+                <ReleaseArt release={r} />
+              )}
+              <div className="release-info">
+                <h3>{r.title}</h3>
+                <p className="release-artist">{r.artist}</p>
+                <p className="release-meta">{r.meta}</p>
+                <div className="stream-links">
+                  {r.links.map((link) => (
+                    <a key={link.label} href={link.url} className="stream-btn">{link.label}</a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </Carousel>
+      </div>
+    </section>
+  );
+}
