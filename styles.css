@@ -188,6 +188,11 @@ img { max-width: 100%; display: block; }
   transform: translateY(-1px);
 }
 
+.nav-cta-always {
+  display: flex;
+  align-items: center;
+}
+
 .nav-toggle {
   display: none;
   flex-direction: column;
@@ -1036,6 +1041,11 @@ img { max-width: 100%; display: block; }
 @media (max-width: 768px) {
   .nav-links { display: none; }
   .nav-toggle { display: flex; }
+  .nav-cta-always {
+    font-size: 0.72rem;
+    padding: 0.4rem 0.75rem;
+    white-space: nowrap;
+  }
 
   .releases-grid {
     grid-template-columns: 1fr 1fr;
