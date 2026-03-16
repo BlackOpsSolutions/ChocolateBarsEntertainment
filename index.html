@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chocolate Bars Entertainment</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#home" class="nav-logo">
+        <span class="logo-choc">Chocolate</span><span class="logo-bars">Bars</span>
+        <span class="logo-ent">Entertainment</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#artists">Artists</a></li>
+        <li><a href="#releases">Releases</a></li>
+        <li><a href="#contact" class="nav-cta">Get In Touch</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-mobile" id="navMobile">
+      <a href="#about">About</a>
+      <a href="#artists">Artists</a>
+      <a href="#releases">Releases</a>
+      <a href="#contact">Get In Touch</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg">
+      <div class="bars-visual">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </div>
+    </div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Independent. Authentic. Sweet.</p>
+      <h1 class="hero-title">
+        <span class="title-choc">Chocolate</span><br />
+        <span class="title-bars">Bars</span><br />
+        <span class="title-ent">Entertainment</span>
+      </h1>
+      <p class="hero-tagline">Where fresh voices meet sweet opportunity —<br />an independent label for artists who deserve to be heard.</p>
+      <div class="hero-actions">
+        <a href="#artists" class="btn btn-primary">Explore Our Artists</a>
+        <a href="#about" class="btn btn-ghost">Our Story</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-visual">
+          <div class="about-badge">Est. Since Day One</div>
+          <div class="about-image-frame">
+            <div class="about-placeholder">
+              <div class="mic-icon">🎤</div>
+            </div>
+          </div>
+          <div class="about-stat-cards">
+            <div class="stat-card"><span class="stat-num">20+</span><span class="stat-label">Artists Signed</span></div>
+            <div class="stat-card"><span class="stat-num">100+</span><span class="stat-label">Tracks Released</span></div>
+          </div>
+        </div>
+        <div class="about-text">
+          <p class="section-label">Who We Are</p>
+          <h2 class="section-title">Built on Bars.<br />Powered by Soul.</h2>
+          <p class="about-body">
+            Chocolate Bars Entertainment was born from a simple truth: great music deserves great backing. Founded by Chocolate himself — a smooth operator with an ear for talent and a gift for knowing what hits — CBE is the home for artists who have the sauce but needed the stage.
+          </p>
+          <p class="about-body">
+            We're not a major label with a cookie-cutter mold. We're independent, we're intentional, and we're invested in every artist we work with. Whether you're spitting bars, singing your soul out, or producing the next wave — if you've got the gift, we've got the platform.
+          </p>
+          <div class="about-values">
+            <div class="value-item">
+              <span class="value-icon">🎵</span>
+              <div>
+                <strong>Authentic Sound</strong>
+                <p>No filters on talent here. We let artists be who they are.</p>
+              </div>
+            </div>
+            <div class="value-item">
+              <span class="value-icon">🤝</span>
+              <div>
+                <strong>Real Partnerships</strong>
+                <p>Artists are family. We grow together or not at all.</p>
+              </div>
+            </div>
+            <div class="value-item">
+              <span class="value-icon">🚀</span>
+              <div>
+                <strong>Full Support</strong>
+                <p>From the booth to the billboard — we ride the whole way.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTISTS -->
+  <section class="artists" id="artists">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">The Roster</p>
+        <h2 class="section-title">Explore Our Artists</h2>
+        <p class="section-sub">Each voice on this label is one-of-a-kind. Get acquainted.</p>
+      </div>
+      <div class="artists-filter">
+        <button class="filter-btn active" data-filter="all">All Artists</button>
+        <button class="filter-btn" data-filter="rap">Hip-Hop / Rap</button>
+        <button class="filter-btn" data-filter="rnb">R&amp;B / Soul</button>
+        <button class="filter-btn" data-filter="afro">Afrobeats</button>
+        <button class="filter-btn" data-filter="pop">Pop</button>
+      </div>
+      <div class="artists-grid" id="artistsGrid">
+
+        <div class="artist-card" data-genre="rap">
+          <div class="artist-img" style="background: linear-gradient(135deg, #3d1c02 0%, #7b3f10 100%);">
+            <span class="artist-emoji">🎤</span>
+          </div>
+          <div class="artist-info">
+            <h3>King Remy</h3>
+            <span class="artist-genre">Hip-Hop / Rap</span>
+            <p>South-side storyteller with a voice like smooth bourbon and bars that cut like glass.</p>
+            <a href="#contact" class="artist-link">Book &rarr;</a>
+          </div>
+        </div>
+
+        <div class="artist-card" data-genre="rnb">
+          <div class="artist-img" style="background: linear-gradient(135deg, #1c0a2e 0%, #6b2d8b 100%);">
+            <span class="artist-emoji">🎶</span>
+          </div>
+          <div class="artist-info">
+            <h3>Velvet Monroe</h3>
+            <span class="artist-genre">R&amp;B / Soul</span>
+            <p>Midnight vocals and melodies that stick to your ribs. Every song feels like 2 AM.</p>
+            <a href="#contact" class="artist-link">Book &rarr;</a>
+          </div>
+        </div>
+
+        <div class="artist-card" data-genre="afro">
+          <div class="artist-img" style="background: linear-gradient(135deg, #0d2e1a 0%, #1a7a3a 100%);">
+            <span class="artist-emoji">🥁</span>
+          </div>
+          <div class="artist-info">
+            <h3>Dele Waves</h3>
+            <span class="artist-genre">Afrobeats</span>
+            <p>Lagos energy meets Atlanta hustle. His rhythm hits different every single time.</p>
+            <a href="#contact" class="artist-link">Book &rarr;</a>
+          </div>
+        </div>
+
+        <div class="artist-card" data-genre="pop">
+          <div class="artist-img" style="background: linear-gradient(135deg, #2e1c0a 0%, #c47a1a 100%);">
+            <span class="artist-emoji">🌟</span>
+          </div>
+          <div class="artist-info">
+            <h3>Nova Saint</h3>
+            <span class="artist-genre">Pop</span>
+            <p>Hooks you can't shake and a stage presence that fills arenas. Born for the spotlight.</p>
+            <a href="#contact" class="artist-link">Book &rarr;</a>
+          </div>
+        </div>
+
+        <div class="artist-card" data-genre="rap">
+          <div class="artist-img" style="background: linear-gradient(135deg, #1a0a0a 0%, #8b2020 100%);">
+            <span class="artist-emoji">🔥</span>
+          </div>
+          <div class="artist-info">
+            <h3>Pressure P</h3>
+            <span class="artist-genre">Hip-Hop / Rap</span>
+            <p>Technical, raw, and relentless. Every verse is a statement. Every feature is a moment.</p>
+            <a href="#contact" class="artist-link">Book &rarr;</a>
+          </div>
+        </div>
+
+        <div class="artist-card" data-genre="rnb">
+          <div class="artist-img" style="background: linear-gradient(135deg, #0a1a2e 0%, #1a5a8b 100%);">
+            <span class="artist-emoji">🎸</span>
+          </div>
+          <div class="artist-info">
+            <h3>Amber Reign</h3>
+            <span class="artist-genre">R&amp;B / Soul</span>
+            <p>Old-school soul wrapped in a new-school bow. Her voice could stop traffic on the freeway.</p>
+            <a href="#contact" class="artist-link">Book &rarr;</a>
+          </div>
+        </div>
+
+      </div>
+      <div class="artists-cta">
+        <p>Think you belong on this roster?</p>
+        <a href="#contact" class="btn btn-primary">Submit Your Music</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- RELEASES -->
+  <section class="releases" id="releases">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Fresh Off The Press</p>
+        <h2 class="section-title">Latest Releases</h2>
+        <p class="section-sub">Hot out the studio. Stream it everywhere.</p>
+      </div>
+      <div class="releases-grid">
+
+        <div class="release-card featured">
+          <div class="release-art" style="background: linear-gradient(135deg, #3d1c02, #c47a1a, #7b3f10);">
+            <div class="release-play">&#9654;</div>
+            <span class="release-badge">New</span>
+          </div>
+          <div class="release-info">
+            <h3>Sweet Revenge</h3>
+            <p class="release-artist">King Remy</p>
+            <p class="release-meta">Album &bull; 2026</p>
+            <div class="stream-links">
+              <a href="#" class="stream-btn">Spotify</a>
+              <a href="#" class="stream-btn">Apple Music</a>
+              <a href="#" class="stream-btn">YouTube</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="release-card">
+          <div class="release-art" style="background: linear-gradient(135deg, #1c0a2e, #6b2d8b);">
+            <div class="release-play">&#9654;</div>
+          </div>
+          <div class="release-info">
+            <h3>Midnight Satin</h3>
+            <p class="release-artist">Velvet Monroe</p>
+            <p class="release-meta">EP &bull; 2025</p>
+            <div class="stream-links">
+              <a href="#" class="stream-btn">Spotify</a>
+              <a href="#" class="stream-btn">Apple Music</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="release-card">
+          <div class="release-art" style="background: linear-gradient(135deg, #0d2e1a, #1a7a3a);">
+            <div class="release-play">&#9654;</div>
+          </div>
+          <div class="release-info">
+            <h3>Lagos to ATL</h3>
+            <p class="release-artist">Dele Waves</p>
+            <p class="release-meta">Single &bull; 2025</p>
+            <div class="stream-links">
+              <a href="#" class="stream-btn">Spotify</a>
+              <a href="#" class="stream-btn">Apple Music</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="release-card">
+          <div class="release-art" style="background: linear-gradient(135deg, #2e1c0a, #c47a1a);">
+            <div class="release-play">&#9654;</div>
+          </div>
+          <div class="release-info">
+            <h3>Supernova</h3>
+            <p class="release-artist">Nova Saint</p>
+            <p class="release-meta">Single &bull; 2025</p>
+            <div class="stream-links">
+              <a href="#" class="stream-btn">Spotify</a>
+              <a href="#" class="stream-btn">Apple Music</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-text">
+          <p class="section-label">Let's Talk</p>
+          <h2 class="section-title">Got The Gift?<br />We Got The Stage.</h2>
+          <p class="contact-body">Whether you're an artist ready to take the next step, a promoter looking to book, or a collaborator with a vision — Chocolate's door is open. Pull up.</p>
+          <div class="contact-details">
+            <div class="contact-item">
+              <span class="contact-icon">📧</span>
+              <div>
+                <strong>General Inquiries</strong>
+                <span>info@chocolatebars.ent</span>
+              </div>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">🎵</span>
+              <div>
+                <strong>Artist Submissions</strong>
+                <span>demo@chocolatebars.ent</span>
+              </div>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">🎤</span>
+              <div>
+                <strong>Booking</strong>
+                <span>booking@chocolatebars.ent</span>
+              </div>
+            </div>
+          </div>
+          <div class="social-links">
+            <a href="#" class="social-btn">Instagram</a>
+            <a href="#" class="social-btn">Twitter / X</a>
+            <a href="#" class="social-btn">YouTube</a>
+            <a href="#" class="social-btn">TikTok</a>
+          </div>
+        </div>
+        <div class="contact-form-wrap">
+          <form class="contact-form" id="contactForm">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" placeholder="What do they call you?" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" placeholder="your@email.com" required />
+            </div>
+            <div class="form-group">
+              <label for="type">I'm reaching out about...</label>
+              <select id="type">
+                <option value="">Select a reason</option>
+                <option value="artist">Artist Submission / Signing</option>
+                <option value="booking">Booking an Artist</option>
+                <option value="collab">Collaboration</option>
+                <option value="press">Press / Media</option>
+                <option value="other">Something Else</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Your Message</label>
+              <textarea id="message" rows="5" placeholder="Say what you need to say..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full">Send It &rarr;</button>
+          </form>
+          <div class="form-success" id="formSuccess">
+            <span>✅</span>
+            <p>Message received. Chocolate will be in touch.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <span class="logo-choc">Chocolate</span><span class="logo-bars">Bars</span><br />
+            <span class="logo-ent">Entertainment</span>
+          </div>
+          <p>Where fresh voices meet sweet opportunity.<br />An independent label for artists who deserve to be heard.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>Navigate</h4>
+            <a href="#about">About</a>
+            <a href="#artists">Artists</a>
+            <a href="#releases">Releases</a>
+            <a href="#contact">Contact</a>
+          </div>
+          <div class="footer-col">
+            <h4>For Artists</h4>
+            <a href="#contact">Submit a Demo</a>
+            <a href="#contact">Sign With Us</a>
+            <a href="#contact">Booking</a>
+          </div>
+          <div class="footer-col">
+            <h4>Follow Us</h4>
+            <a href="#">Instagram</a>
+            <a href="#">Twitter / X</a>
+            <a href="#">YouTube</a>
+            <a href="#">TikTok</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Chocolate Bars Entertainment. All rights reserved.</p>
+        <p class="footer-tag">Built smooth. Run different.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
