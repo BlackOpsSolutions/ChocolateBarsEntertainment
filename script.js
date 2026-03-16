@@ -89,6 +89,63 @@ revealStyle.textContent = `
 `;
 document.head.appendChild(revealStyle);
 
+// ---- Carousel: arrows + drag scroll ----
+function initCarousel(grid) {
+  const wrap = grid.closest('.carousel-wrap');
+  const prev = wrap.querySelector('.carousel-prev');
+  const next = wrap.querySelector('.carousel-next');
+
+  function cardWidth() {
+    const card = grid.querySelector('[class*="-card"]:not(.hidden)');
+    if (!card) return 300;
+    const gap = parseFloat(getComputedStyle(grid).gap) || 24;
+    return card.offsetWidth + gap;
+  }
+
+  function updateArrows() {
+    const atStart = grid.scrollLeft <= 4;
+    const atEnd = grid.scrollLeft + grid.clientWidth >= grid.scrollWidth - 4;
+    prev.classList.toggle('hidden', atStart);
+    next.classList.toggle('hidden', atEnd);
+    grid.classList.toggle('scrolled-left', !atStart);
+  }
+
+  prev.addEventListener('click', () => {
+    grid.scrollBy({ left: -cardWidth(), behavior: 'smooth' });
+  });
+  next.addEventListener('click', () => {
+    grid.scrollBy({ left: cardWidth(), behavior: 'smooth' });
+  });
+
+  grid.addEventListener('scroll', updateArrows);
+  updateArrows();
+
+  // Drag to scroll
+  let isDragging = false, startX, startScroll;
+
+  grid.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    startX = e.pageX - grid.offsetLeft;
+    startScroll = grid.scrollLeft;
+    grid.classList.add('dragging');
+  });
+
+  window.addEventListener('mouseup', () => {
+    if (!isDragging) return;
+    isDragging = false;
+    grid.classList.remove('dragging');
+  });
+
+  window.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX - grid.offsetLeft;
+    grid.scrollLeft = startScroll - (x - startX) * 1.2;
+  });
+}
+
+document.querySelectorAll('.artists-grid, .releases-grid').forEach(initCarousel);
+
 // ---- Active nav link on scroll ----
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-links a');
