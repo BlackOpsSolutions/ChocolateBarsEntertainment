@@ -1136,18 +1136,18 @@ img { max-width: 100%; display: block; }
     mask-image: linear-gradient(to right, black 0%, black 98%, transparent 100%);
   }
 
-  /* 1 card fills screen, tiny peek of the next */
+  /* 1 card visible with clear peek of the next */
   .artist-card {
-    min-width: 84vw;
-    max-width: 84vw;
+    min-width: 72vw;
+    max-width: 72vw;
   }
   .release-card {
-    min-width: 80vw;
-    max-width: 80vw;
+    min-width: 72vw;
+    max-width: 72vw;
   }
   .release-card.featured {
-    min-width: 84vw;
-    max-width: 84vw;
+    min-width: 76vw;
+    max-width: 76vw;
   }
   .release-card.featured .release-art { height: 200px; }
 
