@@ -453,6 +453,13 @@ img { max-width: 100%; display: block; }
 }
 
 .mic-icon { font-size: 5rem; }
+.about-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
 
 .about-stat-cards {
   display: flex;
@@ -577,6 +584,17 @@ img { max-width: 100%; display: block; }
   position: relative;
 }
 .artist-emoji { font-size: 3.5rem; }
+.artist-img-photo {
+  overflow: hidden;
+  padding: 0;
+}
+.artist-img-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
 
 .artist-info {
   padding: 1.5rem;
@@ -667,6 +685,47 @@ img { max-width: 100%; display: block; }
   justify-content: center;
   position: relative;
   cursor: pointer;
+}
+.release-video-wrap {
+  padding: 0;
+  overflow: hidden;
+  cursor: default;
+  background: #0d0118;
+}
+.yt-thumb-link {
+  position: absolute;
+  inset: 0;
+  display: block;
+  text-decoration: none;
+}
+.yt-thumb {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  background: #0d0118;
+  display: block;
+}
+.yt-play-btn {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.25);
+  transition: background 0.2s;
+}
+.yt-thumb-link:hover .yt-play-btn {
+  background: rgba(0,0,0,0.45);
+}
+.yt-play-btn svg {
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
+  transition: transform 0.2s;
+}
+.yt-thumb-link:hover .yt-play-btn svg {
+  transform: scale(1.1);
 }
 
 .release-play {
