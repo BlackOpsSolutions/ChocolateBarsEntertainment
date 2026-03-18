@@ -1,24 +1,42 @@
+import { useState } from 'react';
 import releasesData from '../data/releases';
 import Carousel from './Carousel';
 
-function YouTubeThumbnail({ release }) {
+function getYouTubeId(url) {
+  const match = url.match(/(?:v=|\/embed\/|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+  return match ? match[1] : null;
+}
+
+function YouTubeEmbed({ release }) {
+  const [playing, setPlaying] = useState(false);
+  const videoId = getYouTubeId(release.youtubeUrl);
+
   return (
     <div className="release-art release-video-wrap">
-      <a
-        href={release.youtubeUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="yt-thumb-link"
-        aria-label={`Watch ${release.title} on YouTube`}
-      >
-        <img src={release.thumbnail} alt={`${release.title} thumbnail`} className="yt-thumb" />
-        <div className="yt-play-btn">
-          <svg viewBox="0 0 68 48" width="68" height="48">
-            <path d="M66.5 7.7a8.5 8.5 0 0 0-6-6C56 0 34 0 34 0S12 0 7.5 1.7a8.5 8.5 0 0 0-6 6C0 12.3 0 24 0 24s0 11.7 1.5 16.3a8.5 8.5 0 0 0 6 6C12 48 34 48 34 48s22 0 26.5-1.7a8.5 8.5 0 0 0 6-6C68 35.7 68 24 68 24s0-11.7-1.5-16.3z" fill="#FF0000" />
-            <path d="M27 34l18-10-18-10v20z" fill="#fff" />
-          </svg>
-        </div>
-      </a>
+      {playing ? (
+        <iframe
+          className="yt-embed"
+          src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
+          title={release.title}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
+      ) : (
+        <button
+          type="button"
+          className="yt-thumb-link"
+          onClick={() => setPlaying(true)}
+          aria-label={`Play ${release.title}`}
+        >
+          <img src={release.thumbnail} alt={`${release.title} thumbnail`} className="yt-thumb" />
+          <div className="yt-play-btn">
+            <svg viewBox="0 0 68 48" width="68" height="48">
+              <path d="M66.5 7.7a8.5 8.5 0 0 0-6-6C56 0 34 0 34 0S12 0 7.5 1.7a8.5 8.5 0 0 0-6 6C0 12.3 0 24 0 24s0 11.7 1.5 16.3a8.5 8.5 0 0 0 6 6C12 48 34 48 34 48s22 0 26.5-1.7a8.5 8.5 0 0 0 6-6C68 35.7 68 24 68 24s0-11.7-1.5-16.3z" fill="#FF0000" />
+              <path d="M27 34l18-10-18-10v20z" fill="#fff" />
+            </svg>
+          </div>
+        </button>
+      )}
       <span className="release-badge">New</span>
     </div>
   );
@@ -46,7 +64,7 @@ export default function Releases() {
           {releasesData.map((r) => (
             <div className={`release-card${r.featured ? ' featured' : ''}`} key={r.title}>
               {r.featured && r.thumbnail ? (
-                <YouTubeThumbnail release={r} />
+                <YouTubeEmbed release={r} />
               ) : (
                 <ReleaseArt release={r} />
               )}
