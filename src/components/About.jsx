@@ -8,10 +8,10 @@ export default function About() {
             <div className="about-image-frame">
               <img src="/ChocolateBarsPersona.jpg" alt="Chocolate Bars" className="about-photo" />
             </div>
-            <div className="about-stat-cards">
+            {/* <div className="about-stat-cards">
               <div className="stat-card"><span className="stat-num">20+</span><span className="stat-label">Artists Signed</span></div>
               <div className="stat-card"><span className="stat-num">100+</span><span className="stat-label">Tracks Released</span></div>
-            </div>
+            </div> */}
           </div>
           <div className="about-text">
             <p className="section-label">Who We Are</p>
