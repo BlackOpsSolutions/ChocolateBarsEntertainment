@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import artistsData from '../data/artists';
 import Carousel from './Carousel';
+import Icon from './Icon';
 
 const filters = [
   { key: 'all', label: 'All Artists' },
-  { key: 'rap', label: 'Hip-Hop / Rap' },
-  { key: 'rnb', label: 'R&B / Soul' },
-  { key: 'afro', label: 'Afrobeats' },
+  { key: 'rap', label: 'Hip Hop & Rap' },
+  { key: 'rnb', label: 'R&B & Soul' },
   { key: 'pop', label: 'Pop' },
 ];
 
@@ -23,7 +23,10 @@ export default function Artists() {
         <div className="section-header">
           <p className="section-label">The Roster</p>
           <h2 className="section-title">Explore Our Artists</h2>
-          <p className="section-sub">Each voice on this label is one-of-a-kind. Get acquainted.</p>
+          <p className="section-sub">
+            Discover a curated selection of artists, each bringing their own sound, presence, and energy.
+          </p>
+          <p className="section-sub-minor">Available for bookings and collaborations.</p>
         </div>
         <div className="artists-filter">
           {filters.map((f) => (
@@ -39,29 +42,40 @@ export default function Artists() {
 
         <Carousel className="artists-grid">
           {visible.map((a) => (
-            <div className="artist-card" key={a.name} data-genre={a.genre}>
+            <a
+              href={`#${a.route}`}
+              className="artist-card"
+              key={a.name}
+              data-genre={a.genre}
+            >
               {a.image ? (
                 <div className="artist-img artist-img-photo">
                   <img src={a.image} alt={a.name} />
                 </div>
               ) : (
                 <div className="artist-img" style={{ background: a.gradient }}>
-                  <span className="artist-emoji">{a.emoji}</span>
+                  <span className="artist-monogram">
+                    {a.name.split(' ').map((w) => w[0]).join('').slice(0, 2)}
+                  </span>
                 </div>
               )}
               <div className="artist-info">
                 <h3>{a.name}</h3>
                 <span className="artist-genre">{a.genreLabel}</span>
                 <p>{a.description}</p>
-                <a href="#contact" className="artist-link">Book &rarr;</a>
+                <span className="artist-link">
+                  View Profile <Icon name="arrowRight" size={14} />
+                </span>
               </div>
-            </div>
+            </a>
           ))}
         </Carousel>
 
         <div className="artists-cta">
-          <p>Think you belong on this roster?</p>
-          <a href="#contact" className="btn btn-primary">Submit Your Music</a>
+          <p className="artists-cta-heading">Think you have what it takes?</p>
+          <p className="artists-cta-sub">Submit your music for consideration.</p>
+          <a href="#submit" className="btn btn-primary">Submit Music</a>
+          <p className="artists-cta-note">We review a limited number of submissions.</p>
         </div>
       </div>
     </section>

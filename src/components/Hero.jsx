@@ -26,19 +26,18 @@ export default function Hero() {
         </div>
       </div>
       <div className="hero-content">
-        <p className="hero-eyebrow">Independent. Authentic. Sweet.</p>
+        <p className="hero-eyebrow">Independent. Intentional. Iconic.</p>
         <h1 className="hero-title">
-          <span className="title-choc">Chocolate</span><br />
-          <span className="title-bars">Bars</span><br />
+          <span className="title-choc-bars">Chocolate Bars</span>
           <span className="title-ent">Entertainment</span>
         </h1>
         <p className="hero-tagline">
-          Where fresh voices meet sweet opportunity —<br />
-          an independent label for artists who deserve to be heard.
+          Where fresh voices meet real opportunity.<br />
+          A platform for artists, content, and live experiences that connect and stand out.
         </p>
         <div className="hero-actions">
           <a href="#artists" className="btn btn-primary">Explore Our Artists</a>
-          <a href="#about" className="btn btn-ghost">Our Story</a>
+          <a href="#book" className="btn btn-ghost">Book an Artist</a>
         </div>
       </div>
       <div className="hero-scroll">

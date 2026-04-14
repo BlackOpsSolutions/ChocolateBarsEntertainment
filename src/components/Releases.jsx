@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import releasesData from '../data/releases';
 import Carousel from './Carousel';
+import Icon from './Icon';
 
 function getYouTubeId(url) {
   const match = url.match(/(?:v=|\/embed\/|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
@@ -37,7 +38,7 @@ function YouTubeEmbed({ release }) {
           </div>
         </button>
       )}
-      <span className="release-badge">New</span>
+      {release.featured && <span className="release-badge">Featured</span>}
     </div>
   );
 }
@@ -45,7 +46,9 @@ function YouTubeEmbed({ release }) {
 function ReleaseArt({ release }) {
   return (
     <div className="release-art" style={{ background: release.gradient }}>
-      <div className="release-play">&#9654;</div>
+      <div className="release-play">
+        <Icon name="music" size={28} />
+      </div>
     </div>
   );
 }
@@ -57,13 +60,13 @@ export default function Releases() {
         <div className="section-header">
           <p className="section-label">Fresh Off The Press</p>
           <h2 className="section-title">Latest Releases</h2>
-          <p className="section-sub">Hot out the studio. Stream it everywhere.</p>
+          <p className="section-sub">Stream the latest from the CBE roster.</p>
         </div>
 
         <Carousel className="releases-grid">
           {releasesData.map((r) => (
             <div className={`release-card${r.featured ? ' featured' : ''}`} key={r.title}>
-              {r.featured && r.thumbnail ? (
+              {r.thumbnail && r.youtubeUrl ? (
                 <YouTubeEmbed release={r} />
               ) : (
                 <ReleaseArt release={r} />
@@ -74,7 +77,7 @@ export default function Releases() {
                 <p className="release-meta">{r.meta}</p>
                 <div className="stream-links">
                   {r.links.map((link) => (
-                    <a key={link.label} href={link.url} className="stream-btn">{link.label}</a>
+                    <a key={link.label} href={link.url} target="_blank" rel="noopener noreferrer" className="stream-btn">{link.label}</a>
                   ))}
                 </div>
               </div>
