@@ -32,7 +32,23 @@ export default function useRoute() {
     const onHashChange = () => {
       const next = parseHash();
       setRoute(next);
-      if (next !== 'home') window.scrollTo({ top: 0, behavior: 'instant' });
+
+      if (next !== 'home') {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+        return;
+      }
+
+      const raw = window.location.hash.replace(/^#\/?/, '').split('?')[0];
+      if (!raw || raw === 'home') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
+
+      // Home-section anchor from a subpage — wait for DOM then scroll to it
+      requestAnimationFrame(() => {
+        const el = document.getElementById(raw);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
     };
     window.addEventListener('hashchange', onHashChange);
     return () => window.removeEventListener('hashchange', onHashChange);

@@ -11,7 +11,7 @@ export default function Story() {
 
         <div className="story-hero">
           <div className="story-hero-img">
-            <img src="/ChocolateBarsPersona.jpg" alt="Chocolate Bars and Dani Bertuna" />
+            <img src="/DaniDilan.jpg" alt="Chocolate Bars and Dani Bertuna" />
           </div>
           <div className="story-hero-copy">
             <p>
