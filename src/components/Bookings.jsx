@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import artistsData from '../data/artists';
 import Icon from './Icon';
+import { getHashParam } from '../hooks/useRoute';
 
 const FORMSPREE_URL = 'https://formspree.io/f/maqpango';
 
@@ -8,6 +9,11 @@ export default function Bookings() {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(null);
+  const prefilledArtist = (() => {
+    const fromHash = getHashParam('artist');
+    if (!fromHash) return '';
+    return artistsData.find((a) => a.name === fromHash)?.name || '';
+  })();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -137,7 +143,7 @@ export default function Bookings() {
                   </div>
                   <div className="form-group">
                     <label htmlFor="b-artist">Preferred Artist</label>
-                    <select id="b-artist" name="preferredArtist" defaultValue="">
+                    <select id="b-artist" name="preferredArtist" defaultValue={prefilledArtist}>
                       <option value="" disabled>Select an artist</option>
                       {artistsData.map((a) => (
                         <option key={a.slug} value={a.name}>{a.name}</option>

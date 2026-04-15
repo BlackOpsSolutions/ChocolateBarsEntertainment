@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Icon from './Icon';
 
 const FORMSPREE_URL = 'https://formspree.io/f/maqpango'; // Locked to the Domain so no one else can use it
@@ -35,6 +35,16 @@ export default function Contact() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(null);
   const [intent, setIntent] = useState('enquiry');
+  const formRef = useRef(null);
+
+  const selectIntent = (key) => {
+    setIntent(key);
+    if (window.matchMedia('(max-width: 900px)').matches && formRef.current) {
+      formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const focusable = formRef.current.querySelector('input, textarea, select');
+      if (focusable) setTimeout(() => focusable.focus({ preventScroll: true }), 400);
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -83,7 +93,7 @@ export default function Contact() {
                   key={opt.key}
                   type="button"
                   className={`intent-card${intent === opt.key ? ' active' : ''}`}
-                  onClick={() => setIntent(opt.key)}
+                  onClick={() => selectIntent(opt.key)}
                 >
                   <span className="intent-icon">
                     <Icon name={opt.icon} size={20} />
@@ -97,7 +107,7 @@ export default function Contact() {
               ))}
             </div>
           </div>
-          <div className="contact-form-wrap">
+          <div className="contact-form-wrap" ref={formRef}>
             {!submitted ? (
               <form className="contact-form" onSubmit={handleSubmit}>
                 <input type="hidden" name="intent" value={intent} />

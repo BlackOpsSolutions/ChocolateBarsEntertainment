@@ -32,7 +32,8 @@ const artists = [
     genreLabel: 'R&B & Soul',
     description:
       'Soft as silk, laced with a little danger. A sound made for late nights and low lights. Dani doesn\u2019t chase attention. She holds it.',
-    image: null,
+    image: '/DaniBertuna.jpeg',
+    imagePosition: 'top center',
     gradient: 'linear-gradient(135deg, #1a0a2e 0%, #8b3ab8 100%)',
     extended: [
       'Dani Bertuna blends a smooth R&B and synth-driven sound with a sexy, dark femme edge. Her voice is soft like silk, laced with a little danger. Her stage presence is controlled and effortlessly confident, drawing people in and holding them there.',

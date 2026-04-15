@@ -49,8 +49,18 @@ export default function Artists() {
               data-genre={a.genre}
             >
               {a.image ? (
-                <div className="artist-img artist-img-photo">
-                  <img src={a.image} alt={a.name} />
+                <div
+                  className={`artist-img artist-img-photo${a.imageFit === 'contain' ? ' artist-img-contain' : ''}`}
+                  style={a.imageFit === 'contain' && a.gradient ? { background: a.gradient } : undefined}
+                >
+                  <img
+                    src={a.image}
+                    alt={a.name}
+                    style={{
+                      objectFit: a.imageFit || 'cover',
+                      objectPosition: a.imagePosition || 'center',
+                    }}
+                  />
                 </div>
               ) : (
                 <div className="artist-img" style={{ background: a.gradient }}>

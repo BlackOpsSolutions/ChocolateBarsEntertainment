@@ -8,6 +8,20 @@ function getYouTubeId(url) {
   return match ? match[1] : null;
 }
 
+function getSpotifyEmbed(url) {
+  const match = url.match(/open\.spotify\.com\/(track|album|playlist|episode)\/([a-zA-Z0-9]+)/);
+  if (!match) return null;
+  return `https://open.spotify.com/embed/${match[1]}/${match[2]}`;
+}
+
+function streamIconFor(label) {
+  const key = label.toLowerCase();
+  if (key.includes('spotify')) return 'spotify';
+  if (key.includes('apple')) return 'apple';
+  if (key.includes('youtube')) return 'youtubeFilled';
+  return 'music';
+}
+
 function YouTubeEmbed({ release }) {
   const [playing, setPlaying] = useState(false);
   const videoId = getYouTubeId(release.youtubeUrl);
@@ -43,6 +57,21 @@ function YouTubeEmbed({ release }) {
   );
 }
 
+function SpotifyEmbed({ release, embedUrl }) {
+  return (
+    <div className="release-art release-spotify-wrap">
+      <iframe
+        className="spotify-embed"
+        src={embedUrl}
+        title={release.title}
+        allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy"
+      />
+      {release.featured && <span className="release-badge">Featured</span>}
+    </div>
+  );
+}
+
 function ReleaseArt({ release }) {
   return (
     <div className="release-art" style={{ background: release.gradient }}>
@@ -51,6 +80,20 @@ function ReleaseArt({ release }) {
       </div>
     </div>
   );
+}
+
+function resolveMedia(release) {
+  if (release.featured && release.thumbnail && release.youtubeUrl) {
+    return { type: 'youtube', node: <YouTubeEmbed release={release} /> };
+  }
+  const spotifyLink = release.links.find((l) => l.label.toLowerCase().includes('spotify'));
+  if (spotifyLink) {
+    const embedUrl = getSpotifyEmbed(spotifyLink.url);
+    if (embedUrl) {
+      return { type: 'spotify', node: <SpotifyEmbed release={release} embedUrl={embedUrl} /> };
+    }
+  }
+  return { type: 'art', node: <ReleaseArt release={release} /> };
 }
 
 export default function Releases() {
@@ -63,26 +106,40 @@ export default function Releases() {
           <p className="section-sub">Stream the latest from the CBE roster.</p>
         </div>
 
-        <Carousel className="releases-grid">
-          {releasesData.map((r) => (
-            <div className={`release-card${r.featured ? ' featured' : ''}`} key={r.title}>
-              {r.thumbnail && r.youtubeUrl ? (
-                <YouTubeEmbed release={r} />
-              ) : (
-                <ReleaseArt release={r} />
-              )}
+        <Carousel className="releases-grid" loop>
+          {releasesData.map((r) => {
+            const media = resolveMedia(r);
+            const cardClass = [
+              'release-card',
+              r.featured && 'featured',
+              media.type === 'spotify' && 'has-spotify',
+            ].filter(Boolean).join(' ');
+            return (
+            <div className={cardClass} key={r.title}>
+              {media.node}
               <div className="release-info">
                 <h3>{r.title}</h3>
                 <p className="release-artist">{r.artist}</p>
                 <p className="release-meta">{r.meta}</p>
                 <div className="stream-links">
                   {r.links.map((link) => (
-                    <a key={link.label} href={link.url} target="_blank" rel="noopener noreferrer" className="stream-btn">{link.label}</a>
+                    <a
+                      key={link.label}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`stream-btn stream-btn-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
+                      aria-label={`Listen on ${link.label}`}
+                      title={link.label}
+                    >
+                      <Icon name={streamIconFor(link.label)} size={18} />
+                    </a>
                   ))}
                 </div>
               </div>
             </div>
-          ))}
+            );
+          })}
         </Carousel>
       </div>
     </section>

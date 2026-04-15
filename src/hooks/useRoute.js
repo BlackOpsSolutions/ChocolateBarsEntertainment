@@ -14,9 +14,15 @@ export const ARTIST_ROUTE_TO_SLUG = {
 };
 
 function parseHash() {
-  const raw = window.location.hash.replace(/^#\/?/, '');
+  const raw = window.location.hash.replace(/^#\/?/, '').split('?')[0];
   if (PAGE_ROUTES.has(raw)) return raw;
   return 'home';
+}
+
+export function getHashParam(name) {
+  const query = window.location.hash.split('?')[1];
+  if (!query) return null;
+  return new URLSearchParams(query).get(name);
 }
 
 export default function useRoute() {

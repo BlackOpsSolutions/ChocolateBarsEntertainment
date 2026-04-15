@@ -24,7 +24,19 @@ export default function ArtistProfile({ slug }) {
         <div className="artist-profile-grid">
           <div className="artist-profile-visual">
             {artist.image ? (
-              <img src={artist.image} alt={artist.name} className="artist-profile-photo" />
+              <div
+                className={`artist-profile-photo${artist.imageFit === 'contain' ? ' artist-profile-photo-contain' : ''}`}
+                style={artist.imageFit === 'contain' && artist.gradient ? { background: artist.gradient } : undefined}
+              >
+                <img
+                  src={artist.image}
+                  alt={artist.name}
+                  style={{
+                    objectFit: artist.imageFit || 'cover',
+                    objectPosition: artist.imagePosition || 'center',
+                  }}
+                />
+              </div>
             ) : (
               <div className="artist-profile-photo placeholder" style={{ background: artist.gradient }}>
                 <span className="artist-monogram">
@@ -61,7 +73,12 @@ export default function ArtistProfile({ slug }) {
             </div>
 
             <div className="artist-profile-actions">
-              <a href="#book" className="btn btn-primary">Book {artist.name.split(' ')[0]}</a>
+              <a
+                href={`#book?artist=${encodeURIComponent(artist.name)}`}
+                className="btn btn-primary"
+              >
+                Book {artist.name.split(' ')[0]}
+              </a>
               <a href="#contact" className="btn btn-ghost">General Enquiry</a>
             </div>
           </div>

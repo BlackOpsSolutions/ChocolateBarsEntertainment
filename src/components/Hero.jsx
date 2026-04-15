@@ -28,11 +28,13 @@ export default function Hero() {
       <div className="hero-content">
         <p className="hero-eyebrow">Independent. Intentional. Iconic.</p>
         <h1 className="hero-title">
-          <span className="title-choc-bars">Chocolate Bars</span>
+          <span className="title-choc-bars">
+            <span className="title-choc">Chocolate</span> <span className="title-bars">Bars</span>
+          </span>
           <span className="title-ent">Entertainment</span>
         </h1>
         <p className="hero-tagline">
-          Where fresh voices meet real opportunity.<br />
+          Where fresh voices meet sweet opportunities.<br />
           A platform for artists, content, and live experiences that connect and stand out.
         </p>
         <div className="hero-actions">
