@@ -1,45 +1,62 @@
+import Icon from './Icon';
+
+const VALUES = [
+  {
+    icon: 'mic',
+    title: 'Authentic Sound',
+    text: 'No filters, no forced direction. Artists are supported to sound like themselves, not what the market expects.',
+  },
+  {
+    icon: 'handshake',
+    title: 'Real Partnerships',
+    text: 'We work closely with a small roster. Every artist matters, and every project gets attention.',
+  },
+  {
+    icon: 'palette',
+    title: 'Full Creative Direction',
+    text: 'From concept to release, we shape the sound, visuals, and overall experience around each artist.',
+  },
+];
+
 export default function About() {
   return (
     <section className="about" id="about">
       <div className="container">
         <div className="about-grid">
           <div className="about-visual">
-            <div className="about-badge">Est. Since Day One</div>
+            <div className="about-badge">Independent &middot; Intentional</div>
             <div className="about-image-frame">
               <img src="/ChocolateBarsPersona.jpg" alt="Chocolate Bars" className="about-photo" />
             </div>
-            {/* <div className="about-stat-cards">
-              <div className="stat-card"><span className="stat-num">20+</span><span className="stat-label">Artists Signed</span></div>
-              <div className="stat-card"><span className="stat-num">100+</span><span className="stat-label">Tracks Released</span></div>
-            </div> */}
           </div>
           <div className="about-text">
             <p className="section-label">Who We Are</p>
-            <h2 className="section-title">Built on Bars.<br />Powered by Soul.</h2>
+            <h2 className="section-title">Great music deserves<br />the right platform.</h2>
             <p className="about-body">
-              Chocolate Bars Entertainment was born from a simple truth: great music deserves great backing.
-              Founded by Chocolate Bars himself — a smooth operator with an ear for talent and a gift for
-              knowing what hits — CBE is the home for artists who have the sauce but needed the stage.
+              Chocolate Bars Entertainment was built on a simple idea: great music deserves the right platform.
+              Founded by Chocolate Bars, CBE exists to develop artists, produce original work, and create
+              experiences that actually connect. It&rsquo;s a space for talent that knows who they are and is
+              ready to be seen.
             </p>
             <p className="about-body">
-              We're not a major label with a cookie-cutter mold. We're independent, we're intentional, and
-              we're invested in every artist we work with. Whether you're spitting bars, singing your soul
-              out, or producing the next wave — if you've got the gift, we've got the platform.
+              We&rsquo;re independent, intentional, and selective about who we work with. No templates, no
+              shortcuts. Just good music, strong identity, and the right support behind it.
             </p>
             <div className="about-values">
-              {[
-                { icon: '\u{1F3B5}', title: 'Authentic Sound', text: 'No filters on talent here. We let artists be who they are.' },
-                { icon: '\u{1F91D}', title: 'Real Partnerships', text: 'Artists are family. We grow together or not at all.' },
-                { icon: '\u{1F680}', title: 'Full Support', text: 'From the booth to the billboard — we ride the whole way.' },
-              ].map((v) => (
+              {VALUES.map((v) => (
                 <div className="value-item" key={v.title}>
-                  <span className="value-icon">{v.icon}</span>
+                  <span className="value-icon">
+                    <Icon name={v.icon} size={22} />
+                  </span>
                   <div>
                     <strong>{v.title}</strong>
                     <p>{v.text}</p>
                   </div>
                 </div>
               ))}
+            </div>
+            <div className="about-actions">
+              <a href="#story" className="btn btn-ghost">Read Our Story</a>
             </div>
           </div>
         </div>

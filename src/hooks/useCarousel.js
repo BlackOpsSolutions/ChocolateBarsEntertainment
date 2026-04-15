@@ -1,23 +1,75 @@
 import { useRef, useState, useEffect, useCallback } from 'react';
 
-export default function useCarousel() {
+export default function useCarousel({ loop = false } = {}) {
   const ref = useRef(null);
-  const [atStart, setAtStart] = useState(true);
+  const [atStart, setAtStart] = useState(!loop);
   const [atEnd, setAtEnd] = useState(false);
 
   const update = useCallback(() => {
     const el = ref.current;
     if (!el) return;
+    if (loop) {
+      setAtStart(false);
+      setAtEnd(false);
+      return;
+    }
     setAtStart(el.scrollLeft <= 4);
     setAtEnd(el.scrollLeft + el.clientWidth >= el.scrollWidth - 4);
-  }, []);
+  }, [loop]);
+
+  // Center featured on mount for loop mode
+  useEffect(() => {
+    if (!loop) return;
+    const el = ref.current;
+    if (!el) return;
+
+    const init = () => {
+      const cards = el.querySelectorAll('[class*="-card"]');
+      if (cards.length < 3) return;
+      const middleIdx = Math.floor(cards.length / 3);
+      const target = cards[middleIdx];
+      const offset = target.offsetLeft - (el.clientWidth - target.offsetWidth) / 2;
+      el.scrollLeft = Math.max(0, offset);
+    };
+
+    const raf = requestAnimationFrame(init);
+    const settle = setTimeout(init, 250);
+    return () => {
+      cancelAnimationFrame(raf);
+      clearTimeout(settle);
+    };
+  }, [loop]);
+
+  // Seamless wrap: silently jump scroll position near edges
+  useEffect(() => {
+    if (!loop) return;
+    const el = ref.current;
+    if (!el) return;
+
+    let ticking = false;
+    const handleScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const setWidth = el.scrollWidth / 3;
+        if (el.scrollLeft < setWidth * 0.2) {
+          el.scrollLeft += setWidth;
+        } else if (el.scrollLeft > setWidth * 1.8) {
+          el.scrollLeft -= setWidth;
+        }
+        ticking = false;
+      });
+    };
+
+    el.addEventListener('scroll', handleScroll, { passive: true });
+    return () => el.removeEventListener('scroll', handleScroll);
+  }, [loop]);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
     el.addEventListener('scroll', update, { passive: true });
     update();
-    // Recalculate on resize
     window.addEventListener('resize', update);
     return () => {
       el.removeEventListener('scroll', update);
@@ -42,7 +94,6 @@ export default function useCarousel() {
     ref.current?.scrollBy({ left: cardWidth(), behavior: 'smooth' });
   }, [cardWidth]);
 
-  // Drag to scroll
   useEffect(() => {
     const el = ref.current;
     if (!el) return;

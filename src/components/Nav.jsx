@@ -24,11 +24,12 @@ export default function Nav() {
           </span>
         </a>
         <ul className="nav-links">
-          <li><a href="#about">About</a></li>
+          <li><a href="#story">About</a></li>
           <li><a href="#artists">Artists</a></li>
           <li><a href="#releases">Releases</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
-        <a href="#contact" className="nav-cta nav-cta-always">Get In Touch</a>
+        <a href="#book" className="nav-cta nav-cta-always">Book an Artist</a>
         <button
           className="nav-toggle"
           aria-label="Toggle menu"
@@ -38,9 +39,11 @@ export default function Nav() {
         </button>
       </div>
       <div className={`nav-mobile${mobileOpen ? ' open' : ''}`}>
-        <a href="#about" onClick={close}>About</a>
+        <a href="#story" onClick={close}>About</a>
         <a href="#artists" onClick={close}>Artists</a>
         <a href="#releases" onClick={close}>Releases</a>
+        <a href="#contact" onClick={close}>Contact</a>
+        <a href="#book" onClick={close}>Book an Artist</a>
       </div>
     </nav>
   );
