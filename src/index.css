@@ -1646,6 +1646,52 @@ img { max-width: 100%; display: block; }
   flex-wrap: wrap;
 }
 
+.page-events .event-flyer {
+  max-width: 900px;
+  margin: 0 auto 2.5rem;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(200, 146, 42, 0.25);
+}
+.page-events .event-flyer img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.page-events .event-details {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+.page-events .event-intro {
+  color: var(--cream-dark);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.page-events .event-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+.page-events .btn-event {
+  padding: 1rem 2.75rem;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.page-events .event-scarcity {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  font-style: italic;
+  max-width: 480px;
+}
+
 @media (max-width: 900px) {
   .page-body { grid-template-columns: 1fr; gap: 2rem; }
   .story-hero { grid-template-columns: 1fr; gap: 2rem; }

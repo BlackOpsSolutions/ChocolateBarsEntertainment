@@ -9,6 +9,7 @@ import Bookings from './components/Bookings';
 import Story from './components/Story';
 import ArtistProfile from './components/ArtistProfile';
 import SubmitMusic from './components/SubmitMusic';
+import Events from './components/Events';
 import useRoute, { ARTIST_ROUTE_TO_SLUG } from './hooks/useRoute';
 
 function Home() {
@@ -30,6 +31,7 @@ export default function App() {
   if (route === 'book') page = <Bookings />;
   else if (route === 'story') page = <Story />;
   else if (route === 'submit') page = <SubmitMusic />;
+  else if (route === 'events') page = <Events />;
   else if (ARTIST_ROUTE_TO_SLUG[route]) page = <ArtistProfile slug={ARTIST_ROUTE_TO_SLUG[route]} />;
   else page = <Home />;
 

@@ -27,6 +27,7 @@ export default function Nav() {
           <li><a href="#story">About</a></li>
           <li><a href="#artists">Artists</a></li>
           <li><a href="#releases">Releases</a></li>
+          <li><a href="#events">Events</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
         <a href="#book" className="nav-cta nav-cta-always">Book an Artist</a>
@@ -42,6 +43,7 @@ export default function Nav() {
         <a href="#story" onClick={close}>About</a>
         <a href="#artists" onClick={close}>Artists</a>
         <a href="#releases" onClick={close}>Releases</a>
+        <a href="#events" onClick={close}>Events</a>
         <a href="#contact" onClick={close}>Contact</a>
         <a href="#book" onClick={close}>Book an Artist</a>
       </div>

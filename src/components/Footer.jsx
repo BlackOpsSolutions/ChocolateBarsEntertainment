@@ -16,6 +16,7 @@ export default function Footer() {
               <a href="#story">About</a>
               <a href="#artists">Artists</a>
               <a href="#releases">Releases</a>
+              <a href="#events">Events</a>
               <a href="#contact">Contact</a>
             </div>
             <div className="footer-col">

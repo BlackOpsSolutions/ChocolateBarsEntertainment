@@ -4,6 +4,7 @@ const PAGE_ROUTES = new Set([
   'book',
   'story',
   'submit',
+  'events',
   'artist-chocolate-bars',
   'artist-dani-bertuna',
 ]);
